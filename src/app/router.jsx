@@ -1,5 +1,6 @@
-import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, Navigate, Outlet, RouterProvider } from 'react-router-dom';
 import { AppointmentPage } from '../pages/appointment';
+import { InfoPage } from '../pages/info';
 
 const routerConfig = createBrowserRouter([
 	{
@@ -8,7 +9,7 @@ const routerConfig = createBrowserRouter([
 		children: [
 			{
 				index: true,
-				element: <div>Main page</div>,
+				element: <Navigate to="/appointment" replace />,
 			},
 			{
 				path: '/appointment',
@@ -20,7 +21,7 @@ const routerConfig = createBrowserRouter([
 			},
 			{
 				path: '/info',
-				element: <div>Info page</div>,
+				element: <InfoPage />,
 			},
 		],
 	},
