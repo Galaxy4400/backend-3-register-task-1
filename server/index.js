@@ -13,18 +13,18 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(auth);
 
-app.post('/login', async (req, res) => {
-	console.log(req.data);
+app.post('/api/login', async (req, res) => {
+	try {
+		const token = await loginUser(req.body.email, req.body.password);
 
-	res.json({ ok: false });
+		res.cookie('token', token);
 
-	// try {
-	// 	const token = await loginUser(req.body.email, req.body.password);
+		res.json({ ok: true });
+	} catch (error) {
+		res.json({ ok: false });
 
-	// 	res.cookie('token', token);
-	// } catch (error) {
-	// 	console.log(error);
-	// }
+		console.log(error);
+	}
 });
 
 app.post('/api/appointment', async (req, res) => {
