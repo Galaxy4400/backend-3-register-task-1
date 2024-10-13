@@ -13,6 +13,6 @@ export const auth = (req, res, next) => {
 
 		next();
 	} catch (error) {
-		res.redirect('/login');
+		console.log(error);
 	}
 };

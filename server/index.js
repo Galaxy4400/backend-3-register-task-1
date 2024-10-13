@@ -3,19 +3,19 @@ import chalk from 'chalk';
 import mongoose from 'mongoose';
 import { addAppointment, getAppointments } from './controllers/appointments.controller.js';
 import { auth } from './middlewares/auth.js';
+import cookieParser from 'cookie-parser';
 
 const port = 3000;
 const app = express();
 
 app.use(express.json());
+app.use(cookieParser());
 
 app.post('/api/appointment', async (req, res) => {
-	const appointment = await addAppointment(req.body);
-
-	res.json(appointment);
+	await addAppointment(req.body);
 });
 
-app.use(auth);
+// app.use(auth);
 
 app.get('/api/appointments', async (req, res) => {
 	const appointments = await getAppointments();
