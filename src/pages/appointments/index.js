@@ -1,1 +1,1 @@
-export * from './appointments';
+export * from './appointments-page';

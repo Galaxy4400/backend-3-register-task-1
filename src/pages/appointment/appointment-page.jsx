@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 export const AppointmentPage = () => {
 	const [name, setName] = useState('');
@@ -32,6 +33,25 @@ export const AppointmentPage = () => {
 				alignItems: 'center',
 			}}
 		>
+			<nav>
+				<ul style={{ display: 'flex', fontSize: '20px', gap: '30px' }}>
+					<li style={{ listStyle: 'none' }}>
+						<Link style={{ color: '#fff', fontSize: '20px', textTransform: 'uppercase' }} to="/appointment">
+							Запись
+						</Link>
+					</li>
+					<li style={{ listStyle: 'none' }}>
+						<Link style={{ color: '#fff', fontSize: '20px', textTransform: 'uppercase' }} to="/login">
+							Вход
+						</Link>
+					</li>
+					<li style={{ listStyle: 'none' }}>
+						<Link style={{ color: '#fff', fontSize: '20px', textTransform: 'uppercase' }} to="/appointments">
+							Таблица
+						</Link>
+					</li>
+				</ul>
+			</nav>
 			<h2>Запись к врачу</h2>
 			<form
 				onSubmit={submitHandler}

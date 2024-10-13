@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export const LoginPage = () => {
 	const navigate = useNavigate();
@@ -16,13 +16,14 @@ export const LoginPage = () => {
 			method: 'POST',
 			body: JSON.stringify(data),
 			headers: { 'Content-Type': 'application/json' },
+			credentials: 'include',
 		});
 
 		const responseData = await response.json();
 
-		console.log(responseData);
-
-		// navigate('/appointments');
+		if (responseData.ok) {
+			navigate('/appointments');
+		}
 	};
 
 	return (
@@ -36,6 +37,25 @@ export const LoginPage = () => {
 				alignItems: 'center',
 			}}
 		>
+			<nav>
+				<ul style={{ display: 'flex', gap: '30px' }}>
+					<li style={{ listStyle: 'none' }}>
+						<Link style={{ color: '#fff', fontSize: '20px', textTransform: 'uppercase' }} to="/appointment">
+							Запись
+						</Link>
+					</li>
+					<li style={{ listStyle: 'none' }}>
+						<Link style={{ color: '#fff', fontSize: '20px', textTransform: 'uppercase' }} to="/login">
+							Вход
+						</Link>
+					</li>
+					<li style={{ listStyle: 'none' }}>
+						<Link style={{ color: '#fff', fontSize: '20px', textTransform: 'uppercase' }} to="/appointments">
+							Таблица
+						</Link>
+					</li>
+				</ul>
+			</nav>
 			<h2>Вход в систему</h2>
 			<form
 				onSubmit={submitHandler}
@@ -55,6 +75,7 @@ export const LoginPage = () => {
 					<span>Пароль</span>
 					<input
 						name="password"
+						type="password"
 						value={password}
 						onChange={(e) => setPassword(e.target.value)}
 						style={{ padding: '5px', border: '1px solid #fff' }}
