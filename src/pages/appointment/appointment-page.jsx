@@ -10,15 +10,15 @@ export const AppointmentPage = () => {
 
 		const data = { name, phone, message };
 
-		const res = await fetch('/api/appointment', {
+		await fetch('/api/appointment', {
 			method: 'POST',
 			body: JSON.stringify(data),
 			headers: { 'Content-Type': 'application/json' },
 		});
 
-		const appointment = await res.json();
-
-		console.log(appointment);
+		setName('');
+		setPhone('');
+		setMessage('');
 	};
 
 	return (

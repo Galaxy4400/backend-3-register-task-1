@@ -1,6 +1,7 @@
 import express from 'express';
 import chalk from 'chalk';
 import mongoose from 'mongoose';
+import { appointmentCreate } from './controllers/appointments.controller.js';
 
 const port = 3000;
 const app = express();
@@ -8,9 +9,9 @@ const app = express();
 app.use(express.json());
 
 app.post('/api/appointment', async (req, res) => {
-	// const appointment = await
+	const appointment = await appointmentCreate(req.body);
 
-	res.json({});
+	res.json(appointment);
 });
 
 mongoose
