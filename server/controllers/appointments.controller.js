@@ -1,5 +1,5 @@
 import chalk from 'chalk';
-import { Appointment } from '../models/appointment.js';
+import { Appointment } from '../models/appointment.model.js';
 
 export const getAppointments = async () => {
 	const appointments = await Appointment.find();
