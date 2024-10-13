@@ -1,6 +1,6 @@
 import { createBrowserRouter, Navigate, Outlet, RouterProvider } from 'react-router-dom';
 import { AppointmentPage } from '../pages/appointment';
-import { InfoPage } from '../pages/info';
+import { AppointmentsPage } from '../pages/appointments';
 import { LoginPage } from '../pages/login';
 
 const routerConfig = createBrowserRouter([
@@ -17,12 +17,12 @@ const routerConfig = createBrowserRouter([
 				element: <AppointmentPage />,
 			},
 			{
-				path: '/login',
-				element: <LoginPage />,
+				path: '/appointments',
+				element: <AppointmentsPage />,
 			},
 			{
-				path: '/info',
-				element: <InfoPage />,
+				path: '/login',
+				element: <LoginPage />,
 			},
 		],
 	},

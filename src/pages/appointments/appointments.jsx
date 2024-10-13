@@ -1,7 +1,7 @@
 import { format } from 'date-fns';
 import { useEffect, useState } from 'react';
 
-export const InfoPage = () => {
+export const AppointmentsPage = () => {
 	const [appointments, setAppointments] = useState([]);
 
 	useEffect(() => {

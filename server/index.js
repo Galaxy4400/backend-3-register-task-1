@@ -10,12 +10,11 @@ const app = express();
 
 app.use(express.json());
 app.use(cookieParser());
+app.use(auth);
 
 app.post('/api/appointment', async (req, res) => {
 	await addAppointment(req.body);
 });
-
-// app.use(auth);
 
 app.get('/api/appointments', async (req, res) => {
 	const appointments = await getAppointments();
