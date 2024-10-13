@@ -1,13 +1,17 @@
 import { format } from 'date-fns';
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export const AppointmentsPage = () => {
+	const navigate = useNavigate();
 	const [appointments, setAppointments] = useState([]);
 
 	useEffect(() => {
 		fetch('/api/appointments')
 			.then((response) => response.json())
-			.then(setAppointments);
+			.then(({ data, ok }) => {
+				ok ? setAppointments(data) : navigate('/login');
+			});
 	}, []);
 
 	return (

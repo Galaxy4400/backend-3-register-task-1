@@ -1,6 +1,9 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export const LoginPage = () => {
+	const navigate = useNavigate();
+
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 
@@ -9,14 +12,17 @@ export const LoginPage = () => {
 
 		const data = { email, password };
 
-		await fetch('/api/login', {
+		const response = await fetch('/api/login', {
 			method: 'POST',
 			body: JSON.stringify(data),
 			headers: { 'Content-Type': 'application/json' },
 		});
 
-		setEmail('');
-		setPassword('');
+		const responseData = await response.json();
+
+		console.log(responseData);
+
+		// navigate('/appointments');
 	};
 
 	return (

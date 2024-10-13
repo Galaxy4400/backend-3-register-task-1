@@ -7,15 +7,17 @@ import { JWT_SECRET } from '../utils/constants.js';
 export const loginUser = async (email, password) => {
 	const user = await User.findOne({ email });
 
-	if (!user) {
-		throw new Error('user is not found');
-	}
+	console.log(user);
+
+	// if (!user) {
+	// 	throw new Error('user is not found');
+	// }
 
 	const isPasswordCorrect = await bcrypt.compare(password, user.password);
 
-	if (!isPasswordCorrect) {
-		throw new Error('Wrong password');
-	}
+	// if (!isPasswordCorrect) {
+	// 	throw new Error('Wrong password');
+	// }
 
 	console.log(chalk.bgGreen('User was login!'));
 
